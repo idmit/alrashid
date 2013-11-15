@@ -7,9 +7,20 @@
 //
 
 #include <iostream>
+#include "nonisotrees.h"
 
 int main(int argc, const char * argv[])
 {
+    unsigned verticesNumber = 3;
+    TreeForm form(verticesNumber);
+    
+    while (!form.hasSimpleStructure())
+    {
+        // print
+        form = TreeBuild::buildForm(form);
+    }
+    // print out
+    
     return 0;
 }
 
