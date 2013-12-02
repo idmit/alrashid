@@ -7,19 +7,22 @@
 //
 
 #include <iostream>
-#include "nonisotrees.h"
+#include "nonisotreesgen.h"
 
 int main(int argc, const char * argv[])
 {
-    unsigned verticesNumber = 3;
-    TreeForm form(verticesNumber);
+    unsigned verticesNumber = 4;
+    Generator gen(verticesNumber);
+    Layout *lay = 0;
     
-    while (!form.hasSimpleStructure())
+    while ((lay = gen.giveNext()))
     {
-        // print
-        form = TreeBuild::buildForm(form);
+        lay->pprint();
+        std::cout << '\n';
+        delete lay;
     }
-    // print out
+    
+    std::cout << "\nOverall generated: " << gen.lastGenerationStrength << "\n\n";
     
     return 0;
 }
